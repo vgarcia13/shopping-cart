@@ -21,4 +21,4 @@ done
 python manage.py migrate
 
 # python manage.py runserver 0.0.0.0:8000
-gunicorn --workers=5 --threads=5 shopping_cart.wsgi -b 0.0.0.0:8000 --log-file=-
+gunicorn --workers=2 --threads=2 shopping_cart.wsgi -b 0.0.0.0:8000 --log-file=-
