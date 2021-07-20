@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'shopping_cart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
+        'NAME': 'd8cb5pkqhuppkf',
+        'USER': 'agpsyjgupytmdu',
+        'PASSWORD': '8704b0fb2f8b59dda691f078f40324852358a2fb81cd842d34e03daec30fe9c4',
+        'HOST': 'ec2-34-194-14-176.compute-1.amazonaws.com',
         'PORT': 5432
     }
 }

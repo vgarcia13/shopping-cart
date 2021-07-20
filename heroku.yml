@@ -1,9 +1,9 @@
 build:
   docker:
-    back: Dockerfile
+    web: Dockerfile
 release:
   command:
     - python manage.py migrate
-  image: back
+  image: web
 run:
-  back: gunicorn --workers=2 --threads=2 shopping_cart.wsgi -b 0.0.0.0:8000 --log-file=-
+  web: gunicorn --workers=2 --threads=2 shopping_cart.wsgi -b 0.0.0.0:8000 --log-file=-
