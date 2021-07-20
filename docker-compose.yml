@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    container_name: shoppingcartDB
+    ports:
+    - "5432:5432"
+  back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash dockerutils/wait-for-postgres.sh
+    container_name: shoppingcartBackend
+    links:
+      - db:postgres
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
