@@ -31,8 +31,8 @@ class Cart(models.Model):
     """
     name = models.CharField(max_length=100, default="Generic Cart")
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="user")
-    products = models.ManyToManyField(Product, related_name="products")
-    total = models.FloatField(null=True, blank=True)
+    products = models.ManyToManyField(Product, through='ProductGroup', related_name="products")
+    total = models.FloatField(default=0)
 
     class Meta:
         verbose_name = "cart"
@@ -42,3 +42,12 @@ class Cart(models.Model):
 
     def __unicode__(self):
         return self.user.get_short_name() + " - " + self.name
+
+
+class ProductGroup(models.Model):
+    """
+    ProductGroup Instance
+    """
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, verbose_name="cart")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="product")
+    quantity = models.IntegerField(default=1)
